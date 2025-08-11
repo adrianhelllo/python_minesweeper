@@ -1,9 +1,6 @@
 import random
 import os
 
-BOARD_WIDTH = int(input("Enter board width\n > "))
-BOARD_HEIGHT = int(input("Enter board height\n > "))
-
 COVERED_CELL_SYM = '■'
 EMPTY_CELL_SYM = '□'
 MINE_SYM = '⧆'
@@ -22,9 +19,17 @@ def clear():
 
 def user_action_prompt():
     action = input("Choose an action:\nPlace flag: 1\nUncover tile: 2\n > ")
-
-    while action not in (1, 2):
+    
+    while int(action) not in (1, 2):
         action = input("Actions:\nPlace flag: 1\nUncover tile: 2\n > ")
+
+def user_difficulty_prompt():
+    difficulty = input("Pick a difficulty:\n  Beginner\n  Intermediate\n  Expert\n > ").lower()
+
+    while difficulty not in ('beginner', 'intermediate', 'expert'):
+        difficulty = input("Pick a difficulty:\n  Beginner\n  Intermediate\n  Expert\n > ")
+
+    return difficulty
 
 def print_board(board):
     for row in board:
@@ -33,9 +38,19 @@ def print_board(board):
         print()
 
 def main():
-    board = [[0 for _ in range(BOARD_WIDTH)] for _ in range(BOARD_HEIGHT)]
+    difficulty = user_difficulty_prompt()
+
+    if difficulty != 'custom':
+        size: tuple = BOARD_DIFF_SIZES[difficulty]
+        mines = BOARD_DIFF_MINES[list(BOARD_DIFF_SIZES.values()).index(size)]
+
+    board = [[0 for _ in range(size[0])] for _ in range(size[1])]
+
+    clear()
 
     print_board(board)
+
+    print(size, mines)
 
     user_action_prompt()
 
