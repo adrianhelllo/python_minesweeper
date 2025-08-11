@@ -26,10 +26,29 @@ def user_action_prompt():
 def user_difficulty_prompt():
     difficulty = input("Pick a difficulty:\n  Beginner\n  Intermediate\n  Expert\n > ").lower()
 
-    while difficulty not in ('beginner', 'intermediate', 'expert'):
+    while difficulty not in ('beginner', 'intermediate', 'expert', 'custom'):
         difficulty = input("Pick a difficulty:\n  Beginner\n  Intermediate\n  Expert\n > ")
 
     return difficulty
+
+def custom_board_prompt():
+    board_w = int(input("Enter custom board width [w >= 9]\n > "))
+
+    while board_x < 9:
+        print("Custom board width must be greater than 9.")
+        board_x = int(input("Enter custom board width [w >= 9]\n > "))
+
+    board_h = int(input("Enter custom board height [h >= 9]\n > "))
+
+    while board_h < 9:
+        print("Custom board height must be greater than 9.")
+        board_x = int(input("Enter custom board height [h >= 9]\n > "))
+
+    board_x = int(input("Enter custom board width [w >= 9]\n > "))
+
+    while board_x < 9:
+        print("Custom board width must be greater than 9.")
+        board_x = int(input("Enter custom board width [w >= 9]\n > "))
 
 def print_board(board):
     for row in board:
@@ -43,6 +62,8 @@ def main():
     if difficulty != 'custom':
         size: tuple = BOARD_DIFF_SIZES[difficulty]
         mines = BOARD_DIFF_MINES[list(BOARD_DIFF_SIZES.values()).index(size)]
+    else:
+        size 
 
     board = [[0 for _ in range(size[0])] for _ in range(size[1])]
 
