@@ -10,7 +10,18 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    char *message = argv[1];
+    char combined[1024] = "";
+
+    for (int i = 1; i < argc; i++)
+    {
+        strcat(combined, argv[i]);
+        if (i < argc - 1)
+        {
+            strcat(combined, " ");
+        }
+    }
+
+    char *message = combined;
     int len = strlen(message);
 
     char output_msg[len + 1];
