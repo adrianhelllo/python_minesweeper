@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    char combined[1024] = "";
+    char combined[4096] = "";
 
     for (int i = 1; i < argc; i++)
     {
