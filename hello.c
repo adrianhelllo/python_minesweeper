@@ -2,18 +2,23 @@
 #include <string.h>
 #include <windows.h>
 
-char MESSAGE[] = "Hello World!";
-
-int main(void)
+int main(int argc, char *argv[])
 {
-    int len = strlen(MESSAGE);
+    if (argc < 2)
+    {
+        printf("Usage: ./hello word1 word2 word3 ...");
+        return 1;
+    }
+
+    char *message = argv[1];
+    int len = strlen(message);
 
     char output_msg[len + 1];
     output_msg[len] = '\0';
 
     for (int i = 0; i <= len; i++)
     {
-        char msg_char = MESSAGE[i];
+        char msg_char = message[i];
 
         for (int j = 0, targ = msg_char; j <= targ; j++)
         {
