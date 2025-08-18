@@ -18,10 +18,10 @@ def clear():
     os.system('cls' if os.name == 'nt' else clear)
 
 def user_action_prompt():
-    action = input("Choose an action:\nPlace flag: 1\nUncover tile: 2\n > ")
+    action = input("Choose an action:\n  Place flag: 1\n  Uncover tile: 2\n > ")
     
     while int(action) not in (1, 2):
-        action = input("Actions:\nPlace flag: 1\nUncover tile: 2\n > ")
+        action = input("Choose an action:\n  Place flag: 1\n  Uncover tile: 2\n > ")
 
 def user_difficulty_prompt():
     difficulty = input("Pick a difficulty:\n  Beginner\n  Intermediate\n  Expert\n  Custom\n > ").lower()
@@ -51,6 +51,11 @@ def custom_board_prompt():
         board_x = int(input("Enter custom mine amount [m >= 10]\n > "))
 
     return ((board_w, board_h), mines)
+
+def prompt_action_location(size, act_str):
+    w, h = size
+
+    x = int(input("Enter "))
 
 def print_board(board):
     for row in board:
