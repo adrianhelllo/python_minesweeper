@@ -6,6 +6,10 @@ EMPTY_CELL_SYM = '□'
 MINE_SYM = '⧆'
 FLAG_SYM = '🚩'
 
+CUSTOM_MIN_W = 9
+CUSTOM_MIN_H = 9
+CUSTOM_MIN_MINES = 10
+
 BOARD_DIFF_SIZES = {
     'beginner' : (9, 9),
     'intermediate' : (16, 16),
@@ -32,30 +36,32 @@ def user_difficulty_prompt():
     return difficulty
 
 def custom_board_prompt():
-    board_w = int(input("Enter custom board width [w >= 9]\n > "))
+    board_w = int(input(f"Enter custom board width [w >= {CUSTOM_MIN_W}]\n > "))
 
-    while board_w < 9:
-        print("Custom board width must be greater than 9.")
-        board_w = int(input("Enter custom board width [w >= 9]\n > "))
+    while board_w < CUSTOM_MIN_W:
+        print(f"Custom board width must be greater than {CUSTOM_MIN_W}.")
+        board_w = int(input(f"Enter custom board width [w >= {CUSTOM_MIN_W}]\n > "))
 
-    board_h = int(input("Enter custom board height [h >= 9]\n > "))
+    board_h = int(input(f"Enter custom board height [h >= {CUSTOM_MIN_H}]\n > "))
 
-    while board_h < 9:
-        print("Custom board height must be greater than 9.")
-        board_x = int(input("Enter custom board height [h >= 9]\n > "))
+    while board_h < CUSTOM_MIN_H:
+        print(f"Custom board height must be greater than {CUSTOM_MIN_H}.")
+        board_x = int(input(f"Enter custom board height [h >= {CUSTOM_MIN_H}]\n > "))
 
-    mines = int(input("Enter custom mine amount [m >= 10]\n > "))
+    mines = int(input(f"Enter custom mine amount [m >= {CUSTOM_MIN_MINES}]\n > "))
 
-    while mines < 10 or mines > board_w * board_h - 9:
-        print("Custom mine amount must be greater than 10 and less than width * height - 9.")
-        board_x = int(input("Enter custom mine amount [m >= 10]\n > "))
+    while mines < CUSTOM_MIN_MINES or mines > board_w * board_h - 9:
+        print(f"Custom mine amount must be greater than {CUSTOM_MIN_MINES} and less than width * height - 9.")
+        board_x = int(input(f"Enter custom mine amount [m >= {CUSTOM_MIN_MINES}]\n > "))
 
     return ((board_w, board_h), mines)
 
 def prompt_action_location(size, act_str):
     w, h = size
 
-    x = int(input("Enter "))
+    x = int(input(f"Enter {act_str} column\n > "))
+    while 
+    y = int(input(f"Enter {act_str} row\n > "))
 
 def print_board(board):
     for row in board:
